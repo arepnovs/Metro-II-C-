@@ -25,13 +25,12 @@ vector<t_stations>    stations_info(string line, int l)
             stations[i].connections.push_back(all[i - 1]);
         if (i < all.size() - 1)
             stations[i].connections.push_back(all[i + 1]);
-        //cout << all[i] << endl;
         i++;
     }
     return(stations);
 }
 
-vector<string>    get_stations(string line, vector<t_stations> stations, vector<string> all, int l)
+vector<string>    get_stations(string line, vector<string> all)
 {
     int i = 0;
     size_t pos;
@@ -65,7 +64,7 @@ int main() {
                 getline(file, str);
                 temp = stations_info(str, line);
                 stations.insert(stations.end(), temp.begin(), temp.end());
-                all_stations = get_stations(str, stations, all_stations, line);
+                all_stations = get_stations(str, all_stations);
                 line++;
             }
             else if (str.find("#connect") != -1)
@@ -85,11 +84,5 @@ int main() {
     }
     else
         cout << "Shiiiit" << endl;
-    int i = 0;
-    while (i < all_stations.size())
-    {
-        cout << all_stations[i]<< endl;
-        i++;
-    }
     return 0;
 }
