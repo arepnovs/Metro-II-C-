@@ -1,9 +1,9 @@
 #line1:
-teatr-vokzal-univer
+teatr-vokzal-univer-
 #line2:
-kresh-plosha tolstogo-kontr
+kresh-plosha tolstogo-kontr-
 #line3:
-hark-pozn-palats
+hark-pozn-palats-
 #connections:
 teatr-kresh
 vokzal-hark
