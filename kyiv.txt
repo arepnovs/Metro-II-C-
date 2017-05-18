@@ -1,0 +1,10 @@
+#line1:
+teatr-vokzal-univer
+#line2:
+kresh-plosha tolstogo-kontr
+#line3:
+hark-pozn-palats
+#connections:
+teatr-kresh
+vokzal-hark
+plosha tolstogo-pozn
