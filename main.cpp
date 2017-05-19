@@ -29,9 +29,9 @@ vector<t_stations>    stations_info(string line, int l, vector <t_stations> stat
         stations.push_back(s_stations());
         stations[i].name = all[j];
         stations[i].line = l;
-        if (i > 0)
+        if ((i > size - all.size()))
             stations[i].connections.push_back(all[j - 1]);
-        if (i < all.size() - 1)
+        if (i < size - 1)
             stations[i].connections.push_back(all[j + 1]);
         i++;
         j++;
@@ -57,9 +57,9 @@ vector<t_stations>    add_connections(vector<t_stations> stations, string str)
     i = 0;
     while (i < stations.size())
     {
-        if (stations[i].name.compare(conn[0]))
+        if (stations[i].name.compare(conn[0]) == 0)
             stations[i].connections.push_back(conn[1]);
-        else if (stations[i].name.compare(conn[1]))
+        else if (stations[i].name.compare(conn[1]) == 0)
             stations[i].connections.push_back(conn[0]);
         i++;
     }
