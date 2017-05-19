@@ -1,21 +1,24 @@
 #include "metro.h"
 
-vector<t_stations>    stations_info(string line, int l)
+vector<string>      str_split_in_vect(string str, string delim, vector<string> splits)
+{
+    size_t pos;
+    string stop;
+
+    while ((pos = str.find(delim)) != string::npos) {
+        stop = str.substr(0, pos);
+        splits.push_back(stop);
+        str.erase(0, pos + delim.length());
+    }
+    return(splits);
+}
+
+vector<t_stations>    stations_info(string line, int l, vector <t_stations> stations)
 {
     int i = 0;
     vector<string> all;
-    vector <t_stations> stations;
-    size_t pos;
-    string stop;
-    string delim = "-";
 
-    while ((pos = line.find(delim)) != string::npos) {
-        stop = line.substr(0, pos);
-        all.push_back(stop);
-        line.erase(0, pos + delim.length());
-        i++;
-    }
-    i = 0;
+    all = str_split_in_vect(line, "-", all);
     while (i < all.size())
     {
         stations.push_back(s_stations());
@@ -30,29 +33,12 @@ vector<t_stations>    stations_info(string line, int l)
     return(stations);
 }
 
-vector<string>    get_stations(string line, vector<string> all)
-{
-    int i = 0;
-    size_t pos;
-    string stop;
-    string delim = "-";
-
-    while ((pos = line.find(delim)) != string::npos) {
-        stop = line.substr(0, pos);
-        all.push_back(stop);
-        line.erase(0, pos + delim.length());
-        i++;
-    }
-    return(all);
-}
-
 int main() {
 
     string str;
     string res;
     int line = 1;
     vector <t_stations> stations;
-    vector <t_stations> temp;
     vector <string> all_stations;
     ifstream file("../kyiv.txt");
     if (file.is_open())
@@ -62,9 +48,8 @@ int main() {
             if (str.find("#line") != -1)
             {
                 getline(file, str);
-                temp = stations_info(str, line);
-                stations.insert(stations.end(), temp.begin(), temp.end());
-                all_stations = get_stations(str, all_stations);
+                stations = stations_info(str, line, stations);
+                all_stations = str_split_in_vect(str, "-", all_stations);
                 line++;
             }
             else if (str.find("#connect") != -1)

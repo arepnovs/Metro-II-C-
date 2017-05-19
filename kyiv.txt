@@ -5,6 +5,6 @@ kresh-plosha tolstogo-kontr-
 #line3:
 hark-pozn-palats-
 #connections:
-teatr-kresh
-vokzal-hark
-plosha tolstogo-pozn
+teatr-kresh-
+vokzal-hark-
+plosha tolstogo-pozn-
