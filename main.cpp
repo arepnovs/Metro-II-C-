@@ -72,7 +72,6 @@ int main() {
     string res;
     int line = 1;
     vector <t_stations> stations;
-    vector <string> all_stations;
     ifstream file("../kyiv.txt");
     if (file.is_open())
     {
@@ -82,24 +81,20 @@ int main() {
             {
                 getline(file, str);
                 stations = stations_info(str, line, stations);
-                all_stations = str_split_in_vect(str, "-", all_stations);
             }
             else if (str.find("#connect") != -1)
             {
                 while (getline(file, str))
-                {
                     stations = add_connections(stations, str);
-                }
-                //cout << "#connect " << res << endl;
             }
             else
-                cout << "Some input error" << endl;
+                cout << "Some error in map" << endl;
             line++;
-
         }
         file.close();
     }
     else
-        cout << "Shiiiit" << endl;
+        cout << "Error" << endl;
+    find_way(stations);
     return 0;
 }

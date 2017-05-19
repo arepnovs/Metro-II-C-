@@ -14,19 +14,11 @@ using namespace std;
 typedef struct s_stations
 {
     int line;
-    int pos;
     string name;
     vector <string> connections;
 
 } t_stations;
 
-/*typedef struct s_path
-{
-    int line;
-    int pos;
-    string name;
-    vector <string> connections;
-
-} t_path;*/
+void find_way(vector<t_stations> stations);
 
 #endif //METRO_C_METRO_H
