@@ -98,9 +98,9 @@ void	all_paths_search(vector<t_stations> stations, int **matrix)
 
     stations = get_start_and_dest(stations, &dest, 0);
     remember_path(0, dest, &path, matrix);
-    int i = 0;
+    /*int i = 0;
     int j;
-    /*while (i < path.path_num)
+    while (i < path.path_num)
     {
         j = 0;
         while (j < path.size)
