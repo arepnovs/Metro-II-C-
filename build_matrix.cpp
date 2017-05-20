@@ -57,7 +57,10 @@ vector<t_stations>     get_start_and_dest(vector<t_stations> stations, int *stat
                 i++;
             }
             if (*station == -1)
+            {
                 cout << "Wrong input! Wrong station name" << endl;
+                i = 0;
+            }
         }
         while (*station == -1);
         if (station != 0)
@@ -73,7 +76,10 @@ vector<t_stations>     get_start_and_dest(vector<t_stations> stations, int *stat
                 i++;
             }
             if (*station == -1)
+            {
                 cout << "Wrong input! Wrong station name" << endl;
+                i = 0;
+            }
         } while (*station == -1);
     }
     return(stations);
@@ -82,8 +88,6 @@ vector<t_stations>     get_start_and_dest(vector<t_stations> stations, int *stat
 void	all_paths_search(vector<t_stations> stations, int **matrix)
 {
     t_dfs path;
-    //string input;
-    //int start = -1;
     int dest;
     path.path_num = 0;
     path.size = stations.size();
@@ -96,7 +100,7 @@ void	all_paths_search(vector<t_stations> stations, int **matrix)
     remember_path(0, dest, &path, matrix);
     int i = 0;
     int j;
-    while (i < path.path_num)
+    /*while (i < path.path_num)
     {
         j = 0;
         while (j < path.size)
@@ -106,10 +110,7 @@ void	all_paths_search(vector<t_stations> stations, int **matrix)
         }
         cout << endl;
         i++;
-
-    }
-
-
+    }*/
 }
 
 void find_way(vector<t_stations> stations)
@@ -129,12 +130,11 @@ void find_way(vector<t_stations> stations)
         {
             matrix[i][j] = (find(stations[i].connections.begin(), stations[i].connections.end(), stations[j].name)
                             != stations[i].connections.end()) ? 1 : 0;
-            cout << i << " " << j << "    " << matrix[i][j] << endl;
             j++;
         }
         i++;
     }
-   i = 0;
+   /*i = 0;
     while (i < stations.size())
     {
         j = 0;
@@ -145,7 +145,7 @@ void find_way(vector<t_stations> stations)
         }
         cout << endl;
         i++;
-    }
+    }*/
     all_paths_search(stations, matrix);
 }
 
