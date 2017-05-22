@@ -93,7 +93,7 @@ vector<t_stations>     get_start_and_dest(vector<t_stations> stations, int *stat
     return(stations);
 }
 
-void choose_best_path(size_t **all, int path_num, vector<t_stations> stations)
+void choose_best_path(size_t **all, int path_num, vector<t_stations> stations, int dest)
 {
     int i = 0;
     int len = 1000000;
@@ -102,7 +102,7 @@ void choose_best_path(size_t **all, int path_num, vector<t_stations> stations)
 
     while (i < path_num)
     {
-        while (all[i][low_len] != 0)
+        while (all[i][low_len - 1] != dest)
             low_len++;
         if (low_len < len)
         {
@@ -113,8 +113,11 @@ void choose_best_path(size_t **all, int path_num, vector<t_stations> stations)
         low_len =1;
     }
     i = 0;
-    while (i < len + 1)
+    cout<< "AAAA" << endl;
+    len = len + 1;
+    while (i < len)
     {
+        cout <<i << "  " << len << endl;
         cout << stations[all[best][i]].name << "  ";
         i++;
     }
@@ -136,7 +139,7 @@ void	all_paths_search(vector<t_stations> stations, int **matrix)
     memset(path.visited, 0, path.size);
     memset(path.path, 0, path.size);
     remember_path(0, dest, &path, matrix);
-    choose_best_path(path.all, path.path_num, stations);
+    choose_best_path(path.all, path.path_num, stations, dest);
 }
 
 void find_way(vector<t_stations> stations)

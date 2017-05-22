@@ -66,13 +66,27 @@ vector<t_stations>    add_connections(vector<t_stations> stations, string str)
     return(stations);
 }
 
-int main() {
+string  what_map(char **av)
+{
+    if (strcmp(av[1], "kyiv") == 0)
+        return("../kyiv.txt");
+    else
+        return(0);
+}
+
+int main(int ac, char **av) {
 
     string str;
     string res;
+    string map;
+    /*if (ac == 2)
+        map = what_map(av);
+    else
+        cout << "Choose city" << endl;*/
     int line = 1;
     vector <t_stations> stations;
     ifstream file("../kyiv.txt");
+    //ifstream file(map);
     if (file.is_open())
     {
         while (getline(file, str))
