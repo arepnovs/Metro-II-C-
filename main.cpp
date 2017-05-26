@@ -79,14 +79,14 @@ int main(int ac, char **av) {
     string str;
     string res;
     string map;
-    /*if (ac == 2)
+    if (ac == 2)
         map = what_map(av);
     else
-        cout << "Choose city" << endl;*/
+        cout << "Choose city" << endl;
     int line = 1;
     vector <t_stations> stations;
-    ifstream file("../kyiv.txt");
-    //ifstream file(map);
+    //ifstream file("../kyiv.txt");
+    ifstream file(map);
     if (file.is_open())
     {
         while (getline(file, str))
